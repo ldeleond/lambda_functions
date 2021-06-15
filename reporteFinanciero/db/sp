@@ -1,0 +1,12 @@
+create or replace procedure reportefinanciero(
+   from date,
+   to date, 
+   type_payment 0,
+   client_id int
+)
+language plpgsql    
+as $$
+begin
+    \copy (SELECT * FROM users) TO 'RUTA_S3' CSV HEADER;
+    commit;
+end;$$
